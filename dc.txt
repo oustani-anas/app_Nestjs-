@@ -1,13 +1,9 @@
-
 version: '3.7'
-
-volumes:
-  db_data:
 
 services:
   db:
-    container_name: db
     image: postgres
+    container_name: db
     environment:
       - POSTGRES_USER=anas
       - POSTGRES_PASSWORD=123
@@ -15,10 +11,13 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - db_data:/var/lib/postgres/data
+      - data:/var/lib/postgresql/data
     networks:
-      - nestnet
+      - ft_transendance
+
+volumes:
+  data:
 
 networks:
-    nestnet:
-      driver: bridge
+  ft_transendance:
+    driver: bridge
